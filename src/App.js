@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import html2canvas from "html2canvas";
+import "./App.css";
 
 function App() {
+  const [buttonLabel, setButtonLabel] = useState("");
+
+  function handleDownload() {
+    html2canvas(document.querySelector("#button")).then(function (canvas) {
+      document.querySelector("#finalversion").appendChild(canvas);
+    });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="title">Button Maker</header>
+      <div className="container">
+        <span className="input-container">
+          <label>Qual é a label do botão?</label>
+          <input
+            value={buttonLabel}
+            onChange={(e) => setButtonLabel(e.target.value)}
+          ></input>
+        </span>
+        <span className="preview">
+          <label>Button Preview</label>
+          <div id="button" className="button">
+            <span className="left" />
+            <span className="label">{buttonLabel}</span>
+            <span className="right" />
+          </div>
+        </span>
+        <span className="button-download">
+          <button onClick={() => handleDownload()}>Gerar Botão</button>
+        </span>
+      </div>
+      <div className="download-container-info">
+        <span className="subtitle">Download botão abaixo:</span>
+        <span className="info">(Botão direito -> Salvar imagem como...)</span>
+      </div>
+      <div className="download-container">
+        <div id="finalversion"></div>
+      </div>
     </div>
   );
 }
