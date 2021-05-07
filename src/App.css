@@ -14,10 +14,15 @@ html {
 
 .title {
   display: flex;
+  flex-direction: column;
   font-weight: bold;
   padding: 20px;
   color: white;
   background-image: linear-gradient(to right, #324b7e 0%, #293d65 100%);
+}
+
+.title .info {
+  font-size: 10px;
 }
 
 .container {

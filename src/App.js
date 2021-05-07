@@ -13,7 +13,13 @@ function App() {
 
   return (
     <div className="App">
-      <header className="title">Button Maker</header>
+      <header className="title">
+        Button Maker
+        <span className="info">
+          (Digite a label do botão -> Confira se está correto -> Clique em
+          "Gerar Botão" -> Faça o download no quadro abaixo!)
+        </span>
+      </header>
       <div className="container">
         <span className="input-container">
           <label>Qual é a label do botão?</label>
